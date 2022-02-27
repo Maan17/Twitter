@@ -11,3 +11,5 @@ class post(models.Model):
     desc = models.TextField()
     post_creation_date = models.DateTimeField(default=timezone.now)
     likes = models.IntegerField(null=True)
+
+

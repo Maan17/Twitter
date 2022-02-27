@@ -10,7 +10,8 @@ from .models import User,post
 
 
 def index(request):
-    return render(request, "network/index.html")
+    posts = post.objects.all().order_by('-post_creation_date')
+    return render(request, 'network/index.html', {'posts':posts})
 
 
 def login_view(request):
@@ -70,7 +71,9 @@ def create_post(request):
     if form.is_valid():
         tweet = form.save(commit = False)
         tweet.owner = request.user
+        tweet.likes = 0
         tweet.save()
         return index(request)
     else:
         return render(request, 'network/create_post.html', {'form': form})
+    

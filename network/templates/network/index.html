@@ -1,5 +1,17 @@
 {% extends "network/layout.html" %}
 
 {% block body %}
-    TODO
+<h2 style="text-align:center">All Posts</h2>
+<table>
+    {% for post in posts %}
+    <tr>
+        <td>
+            <p>{{ post.owner }}</p>
+            <p>{{ post.desc }}</p>
+            <p>{{ post.post_creation_date }}</p>
+            <p>{{ post.likes }}</p>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
 {% endblock %}
